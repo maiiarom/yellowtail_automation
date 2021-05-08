@@ -1,10 +1,8 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Constants;
 import utils.Waiters;
 
 import java.time.Duration;
@@ -47,6 +45,12 @@ public class MainPage extends AbstractPage{
 
     public MainPage() {
         super();
+        waitForLoadableElement();
+    }
+
+    @Override
+    public void waitForLoadableElement(){
+        Waiters.waitForElementToBeVisible(welcomeLabel, Constants.TIME_LOAD_ELEMENT);
     }
 
     public String welcomeLabelGetText(){
@@ -55,6 +59,7 @@ public class MainPage extends AbstractPage{
 
     public void menuButtonClick(){
         menuButton.click();
+        Waiters.waitForElementToBeVisible(menuLanguage, Constants.TIME_LOAD_ELEMENT);
     }
 
     public void menuYellowTailClick(){
@@ -72,48 +77,24 @@ public class MainPage extends AbstractPage{
     public void menuCocktailsClick() { menuCocktails.click(); }
 
     public ChineMainPage navigateToChineMainPage(){
-        //wait
-        waitForLoadableElement(getMenuButton());
         menuButtonClick();
-
-        //wait
-        waitForLoadableElement(getMenuLanguage());
+        Waiters.waitForElementToBeVisible(menuLanguage, Constants.TIME_LOAD_ELEMENT);
         menuLanguageClick();
-
-        //wait
-        waitForLoadableElement(getChinaLanguage());
+        Waiters.waitForElementToBeVisible(menuChinaLanguage, Constants.TIME_LOAD_ELEMENT);
         menuChinaLanguageClick();
-
         return new ChineMainPage();
     }
 
     public WhereToBuyPage navigateToWhereToBuyPage(){
-        //wait
-        waitForLoadableElement(getMenuButton());
         menuButtonClick();
-
-        //wait
-        waitForLoadableElement(getMenuWhereToBuy());
         menuWhereToBuyClick();
-
         return new WhereToBuyPage();
     }
 
     public CocktailsPage navigateToCocktailsPage() {
-        //wait
-        waitForLoadableElement(getMenuButton());
         menuButtonClick();
-
-        //wait
-        waitForLoadableElement(getMenuCocktails());
         menuCocktailsClick();
-
         return new CocktailsPage();
-    }
-
-    @Override
-    public void waitForLoadableElement(WebElement webElement){
-        Waiters.waitForElementToBeVisible(webElement);
     }
 
     public WebElement getWelcomeLabel() {

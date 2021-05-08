@@ -1,27 +1,23 @@
 package pages;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Constants;
 import utils.Waiters;
 
-import java.time.Duration;
-
 public class ChineMainPage extends AbstractPage{
-
-    public ChineMainPage() {
-        super();
-        waitForPageUrl();
-    }
 
     @FindBy (css = ".heading-editable>font:first-child")
     private WebElement chinaMainPageWelcomeLabel;
     @FindBy (css = ".sgg-comp-social-icon>.fa.fa-weibo")
     private WebElement weiboIcon;
+    public ChineMainPage() {
+        super();
+        waitForLoadableElement();
+    }
 
-    public void waitForPageUrl() {
-        new WebDriverWait(ProviderForDriver.getDriver(), Duration.ofSeconds(10)).until(ExpectedConditions.urlContains("yellowtailwine.cn"));
+    @Override
+    public void waitForLoadableElement(){
+        Waiters.waitForElementToBeVisible(chinaMainPageWelcomeLabel, Constants.TIME_LOAD_ELEMENT);
     }
 
     public void weiboIconClick() {
@@ -29,9 +25,8 @@ public class ChineMainPage extends AbstractPage{
     }
 
     public WeiboChinaPage navigateToWeiboChinaPage() {
-        //wait
-        waitForLoadableElement(getWeiboIcon());
         weiboIconClick();
+
 
         int winHandleNum = ProviderForDriver.getDriver().getWindowHandles().size();
         if (winHandleNum > 1){
@@ -40,11 +35,6 @@ public class ChineMainPage extends AbstractPage{
             }
         }
         return new WeiboChinaPage();
-    }
-
-    @Override
-    public void waitForLoadableElement(WebElement webElement){
-        Waiters.waitForElementToBeVisible(webElement);
     }
 
     public String getPageUrl(){

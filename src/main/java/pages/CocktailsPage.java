@@ -1,22 +1,14 @@
 package pages;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Constants;
 import utils.Waiters;
 
-import java.time.Duration;
 import java.util.List;
 
 public class CocktailsPage extends AbstractPage{
-
-    public CocktailsPage() {
-        super();
-    }
 
     @FindBy(css = ".selected")
     private WebElement selectCocktailsDropBox;
@@ -30,6 +22,16 @@ public class CocktailsPage extends AbstractPage{
     private WebElement raspberryRoseWine;
     @FindBy(xpath = "//div[@class=\"tile recipe-tile\"]")
     private List<WebElement> searchResults;
+
+    public CocktailsPage() {
+        super();
+        waitForLoadableElement();
+    }
+
+    @Override
+    public void waitForLoadableElement(){
+        Waiters.waitForElementToBeVisible(selectCocktailsDropBox, Constants.TIME_LOAD_ELEMENT);
+    }
 
     public void selectCocktailsDropBoxClick() {
         selectCocktailsDropBox.click();
@@ -67,7 +69,7 @@ public class CocktailsPage extends AbstractPage{
     }
 
     public void scrolling(WebElement element) {
-        ((JavascriptExecutor)ProviderForDriver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) ProviderForDriver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     public WebElement getSelectCocktailsDropBox() {
@@ -88,10 +90,5 @@ public class CocktailsPage extends AbstractPage{
 
     public List<WebElement> getSearchResults() {
         return searchResults;
-    }
-
-    @Override
-    public void waitForLoadableElement(WebElement webElement){
-        Waiters.waitForElementToBeVisible(webElement);
     }
 }

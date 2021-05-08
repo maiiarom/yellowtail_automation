@@ -1,8 +1,9 @@
 package pages;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
+import utils.Constants;
 import utils.Waiters;
 
 public class WelcomePage extends AbstractPage{
@@ -17,6 +18,12 @@ public class WelcomePage extends AbstractPage{
 
     public WelcomePage() {
         super();
+        waitForLoadableElement();
+    }
+
+    @Override
+    public void waitForLoadableElement(){
+        Waiters.waitForElementToBeVisible(legalAgeCheck, Constants.TIME_LOAD_ELEMENT);
     }
 
     public String legalAgeCheckGetText(){
@@ -33,17 +40,10 @@ public class WelcomePage extends AbstractPage{
     }
 
     public MainPage navigateToMainPage(){
-        //wait
-        waitForLoadableElement(getLegalAgeCheck());
         legalAgeCheckClick();
         selectValueCountryDropBox("eu");
         welcomeButtonClick();
         return new MainPage();
-    }
-
-    @Override
-    public void waitForLoadableElement(WebElement webElement){
-        Waiters.waitForElementToBeVisible(webElement);
     }
 
     public WebElement getLegalAgeCheck(){ return legalAgeCheck; }

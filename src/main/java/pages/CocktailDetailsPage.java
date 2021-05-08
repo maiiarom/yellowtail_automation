@@ -1,14 +1,9 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Constants;
 import utils.Waiters;
-
-import java.time.Duration;
 
 public class CocktailDetailsPage extends AbstractPage{
 
@@ -17,11 +12,12 @@ public class CocktailDetailsPage extends AbstractPage{
 
     public CocktailDetailsPage() {
         super();
-        waitForPageUrl();
+        waitForLoadableElement();
     }
 
-    public void waitForPageUrl() {
-        new WebDriverWait(ProviderForDriver.getDriver(), Duration.ofSeconds(2)).until(ExpectedConditions.urlContains("yellowtailwine.com/recipe"));
+    @Override
+    public void waitForLoadableElement(){
+        Waiters.waitForElementToBeVisible(ingredientSection, Constants.TIME_LOAD_ELEMENT);
     }
 
     public String getPageUrl(){
@@ -30,10 +26,5 @@ public class CocktailDetailsPage extends AbstractPage{
 
     public WebElement getIngredientSection() {
         return ingredientSection;
-    }
-
-    @Override
-    public void waitForLoadableElement(WebElement webElement){
-        Waiters.waitForElementToBeVisible(webElement);
     }
 }

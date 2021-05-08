@@ -1,21 +1,14 @@
 package pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Constants;
 import utils.Waiters;
 
 import java.time.Duration;
 import java.util.List;
 
 public class WhereToBuyPage extends AbstractPage{
-    public WhereToBuyPage() {
-        super();
-        waitForPageUrl();
-    }
 
     @FindBy(css = "#locationName")
     private WebElement fieldLocation;
@@ -24,8 +17,14 @@ public class WhereToBuyPage extends AbstractPage{
     @FindBy(css = "div.address")
     private List<WebElement> searchResults;
 
-    public void waitForPageUrl() {
-        new WebDriverWait(ProviderForDriver.getDriver(), Duration.ofSeconds(2)).until(ExpectedConditions.urlContains("yellowtailwine.com/stores"));
+    public WhereToBuyPage() {
+        super();
+        waitForLoadableElement();
+    }
+
+    @Override
+    public void waitForLoadableElement(){
+        Waiters.waitForElementToBeVisible(fieldLocation, Constants.TIME_LOAD_ELEMENT);
     }
 
     public void fieldLocationClick() {
@@ -42,11 +41,6 @@ public class WhereToBuyPage extends AbstractPage{
 
     public String searchResultsGetText(WebElement element){
         return element.getText();
-    }
-
-    @Override
-    public void waitForLoadableElement(WebElement webElement){
-        Waiters.waitForElementToBeVisible(webElement);
     }
 
     public WebElement getFieldLocation() {
