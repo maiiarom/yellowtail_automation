@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -25,20 +26,24 @@ public class WelcomePage extends AbstractPage{
     public void waitForLoadableElement(){
         Waiters.waitForElementToBeVisible(legalAgeCheck, Constants.TIME_LOAD_ELEMENT);
     }
-
+    @Step("get legalAgeCheck text")
     public String legalAgeCheckGetText(){
         return legalAgeCheck.getText();
     }
 
+    @Step("click on legalAgeCheck")
     public void legalAgeCheckClick(){ legalAgeCheck.click(); }
 
+    @Step("click on welcome button")
     public void welcomeButtonClick(){ welcomeButton.click(); }
 
+    @Step("select country drop box")
     public void selectValueCountryDropBox(String input){
         selectElement = new Select(regionDropBox);
         selectElement.selectByValue(input);
     }
 
+    @Step("navigate to main page")
     public MainPage navigateToMainPage(){
         legalAgeCheckClick();
         selectValueCountryDropBox("eu");
