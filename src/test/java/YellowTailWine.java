@@ -1,3 +1,5 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import pages.*;
@@ -5,6 +7,8 @@ import utils.Constants;
 import utils.Waiters;
 
 public class YellowTailWine extends JunitRunner{
+    @Story("All required elements are displayed")
+    @Description("Case 1: Welcome page: all required elements are displayed")
     @Test
     //Case 1: Welcome page: all required elements are displayed
     //1. Go to Welcome page: https://www.yellowtailwine.com
@@ -22,6 +26,8 @@ public class YellowTailWine extends JunitRunner{
         Assertions.assertFalse(welcomePage.getWelcomeButton().isEnabled(), "case 1, welcomeButton should be disabled but it is enabled");
     }
 
+    @Story("Navigation functionality")
+    @Description("Case 2: Main page: navigate to main page as European customer")
     @Test
     //Case 2: Main page: navigate to main page as European customer
     //1. Tick on checkbox
@@ -35,6 +41,8 @@ public class YellowTailWine extends JunitRunner{
         Assertions.assertTrue(mainPage.welcomeLabelGetText().contains("Welcome".toUpperCase()), "case 2, Welcome label on main page is not appears");
     }
 
+    @Story("All required elements are displayed")
+    @Description("Case 3: Main page: all required elements are displayed")
     @Test
     //Case 3: Main page: all required elements are displayed
     //1. Navigate to main page
@@ -55,6 +63,8 @@ public class YellowTailWine extends JunitRunner{
         Assertions.assertTrue(mainPage.getFooter().isDisplayed(), "case 3, footer is not displayed");
     }
 
+    @Story("Menu functionality")
+    @Description("Case 4: Main page: Menu button logic (open header)")
     @Test
     //Case 4: Main page: Menu button logic (open header)
     //1. Navigate to main page
@@ -81,6 +91,8 @@ public class YellowTailWine extends JunitRunner{
         Assertions.assertTrue(mainPage.getMenuButton().isDisplayed(), "case 4, menu button issue");
     }
 
+    @Story("Menu functionality")
+    @Description("Case 5: Main page: Menu button logic (close header)")
     @Test
     //Case 5: Main page: Menu button logic (close header)
     //1. Navigate to main page
@@ -95,6 +107,8 @@ public class YellowTailWine extends JunitRunner{
         Assertions.assertTrue(mainPage.getMenuButton().isDisplayed(), "case 5, menu button issue");
     }
 
+    @Story("Global Navigation functionality")
+    @Description("Case 6: Main page: Global Nav logic")
     @Test
     //Case 6: Main page: Global Nav logic
     //1. Navigate to main page
@@ -110,6 +124,8 @@ public class YellowTailWine extends JunitRunner{
         Assertions.assertTrue(chineMainPage.getPageUrl().contains(".cn"), "case 6, page does not contain .cn");
     }
 
+    @Story("Global Navigation functionality")
+    @Description("Case 7: Main page: Global Nav logic (CHINA - separate site is open)")
     @Test
     //Case 7: Main page: Global Nav logic (CHINA - separate site is open)
     //1. Navigate to main page
@@ -127,6 +143,8 @@ public class YellowTailWine extends JunitRunner{
         Assertions.assertTrue(weiboChinaPage.getPageUrl().contains("weibo.com/yellowtailChina"), "case 7, https://www.weibo.com/yellowtailChina site is not open");
     }
 
+    @Story("Where to buy location search functionality")
+    @Description("Case 8: Where to buy: enter valid postal code")
     @Test
     //Case 8: Where to buy: enter valid postal code
     //1. Navigate to “Where to buy” page
@@ -152,6 +170,8 @@ public class YellowTailWine extends JunitRunner{
         }
     }
 
+    @Story("Cocktails functionality")
+    @Description("Case 9: Cocktails: Select one wine")
     @Test
     //Case 9: Cocktails: Select one wine
     //1. Navigate to “Cocktails” page
@@ -168,6 +188,8 @@ public class YellowTailWine extends JunitRunner{
         Assertions.assertEquals(searchResult, cocktailsPage.elementsCount(cocktailsPage.getSearchResults()), "case 9, count of results of red wines does not equal expected count");
     }
 
+    @Story("Cocktails details functionality")
+    @Description("Case 10: Cocktails: Navigate to Cocktail recipe page")
     @Test
     //Case 10: Cocktails: Navigate to Cocktail recipe page
     //1. Navigate to “Cocktails” page
@@ -187,6 +209,8 @@ public class YellowTailWine extends JunitRunner{
         Assertions.assertTrue(cocktailDetailsPage.getIngredientSection().isDisplayed(), "case 10, ingredient section is not displayed");
     }
 
+    @Story("Cocktails functionality")
+    @Description("Case 11: Cocktails: Select several wines")
     @Test
     //Case 11: Cocktails: Select several wines
     //1. Navigate to “Cocktails” page
