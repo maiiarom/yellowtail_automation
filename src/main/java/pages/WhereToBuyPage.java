@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Constants;
@@ -27,18 +28,22 @@ public class WhereToBuyPage extends AbstractPage{
         Waiters.waitForElementToBeVisible(fieldLocation, Constants.TIME_LOAD_ELEMENT);
     }
 
+    @Step("click location field")
     public void fieldLocationClick() {
         fieldLocation.click();
     }
 
+    @Step("click search button")
     public void searchButtonClick() {
         searchButton.click();
     }
 
+    @Step("send text {1} to element {0}")
     public void elementSendKeys(WebElement element, String input) {
         element.sendKeys(input);
     }
 
+    @Step("get text of search result {0}")
     public String searchResultsGetText(WebElement element){
         return element.getText();
     }

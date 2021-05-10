@@ -31,14 +31,14 @@ public class WelcomePage extends AbstractPage{
         return legalAgeCheck.getText();
     }
 
-    @Step("click on legalAgeCheck")
+    @Step("click legalAgeCheck")
     public void legalAgeCheckClick(){ legalAgeCheck.click(); }
 
     @Step("click on welcome button")
     public void welcomeButtonClick(){ welcomeButton.click(); }
 
-    @Step("select country drop box")
-    public void selectValueCountryDropBox(String input){
+    @Step("enter value into country dropbox {0}")
+    public void enterValueCountryDropBox(String input){
         selectElement = new Select(regionDropBox);
         selectElement.selectByValue(input);
     }
@@ -46,7 +46,7 @@ public class WelcomePage extends AbstractPage{
     @Step("navigate to main page")
     public MainPage navigateToMainPage(){
         legalAgeCheckClick();
-        selectValueCountryDropBox("eu");
+        enterValueCountryDropBox("eu");
         welcomeButtonClick();
         return new MainPage();
     }

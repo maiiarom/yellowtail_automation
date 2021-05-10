@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,44 +33,50 @@ public class CocktailsPage extends AbstractPage{
     public void waitForLoadableElement(){
         Waiters.waitForElementToBeVisible(selectCocktailsDropBox, Constants.TIME_LOAD_ELEMENT);
     }
-
+    @Step("click selectCocktails drop box")
     public void selectCocktailsDropBoxClick() {
         selectCocktailsDropBox.click();
     }
 
+    @Step("click redWineCocktail item")
     public void redWineCocktailItemClick() {
         redWineCocktailItem.click();
     }
 
+    @Step("click raspberryRoseWine item")
     public void raspberryRoseWineClick() {
         raspberryRoseWine.click();
     }
 
+    @Step("click sparklingWineCocktail item")
     public void sparklingWineCocktailItemClick() {
         sparklingWineCocktailItem.click();
     }
 
+    @Step("count result elements")
     public int elementsCount(List<WebElement> elements) {
         return elements.size();
     }
 
+    @Step("navigate to cocktail details page")
     public CocktailDetailsPage navigateToCocktailDetailsPage(){
-        int winHandleNum = ProviderForDriver.getDriver().getWindowHandles().size();
-
+        int winHandleNum = ProviderForDriver.INSTANCE.getDriver().getWindowHandles().size();
         if (winHandleNum > 1){
-            for (String winHandle: ProviderForDriver.getDriver().getWindowHandles()){
-                ProviderForDriver.getDriver().switchTo().window(winHandle);
+            for (String winHandle: ProviderForDriver.INSTANCE.getDriver().getWindowHandles()){
+                ProviderForDriver.INSTANCE.getDriver().switchTo().window(winHandle);
             }
         }
         return new CocktailDetailsPage();
     }
 
+    @Step("get text from cocktailsType field")
     public String cocktailsTypeFieldGetText() {
         return cocktailsTypeField.getText();
     }
 
+    @Step("scrolling to element {0}")
     public void scrolling(WebElement element) {
-        ((JavascriptExecutor) ProviderForDriver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) ProviderForDriver.INSTANCE.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
     public WebElement getSelectCocktailsDropBox() {

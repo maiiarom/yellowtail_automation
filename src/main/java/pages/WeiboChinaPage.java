@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Constants;
@@ -20,7 +21,8 @@ public class WeiboChinaPage extends AbstractPage{
         Waiters.waitForElementToBeVisible(weiboIcon, Constants.TIME_LOAD_WEIBOPAGE_ELEMENT);
     }
 
+    @Step("get page url")
     public String getPageUrl(){
-        return ProviderForDriver.getDriver().getCurrentUrl();
+        return ProviderForDriver.INSTANCE.getDriver().getCurrentUrl();
     }
 }

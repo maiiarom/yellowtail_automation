@@ -10,7 +10,7 @@ import java.time.Duration;
 public class Waiters {
 
     public static WebElement waitForElementToBeVisible(WebElement webElement, int timeLoadElement){
-        return new WebDriverWait(new ProviderForDriver().getDriver(), Duration.ofSeconds(timeLoadElement))
+        return new WebDriverWait(new ProviderForDriver().INSTANCE.getDriver(), timeLoadElement)
                 .until(ExpectedConditions.visibilityOf(webElement));
     }
 }

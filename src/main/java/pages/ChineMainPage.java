@@ -1,4 +1,5 @@
 package pages;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Constants;
@@ -20,25 +21,26 @@ public class ChineMainPage extends AbstractPage{
         Waiters.waitForElementToBeVisible(chinaMainPageWelcomeLabel, Constants.TIME_LOAD_ELEMENT);
     }
 
+    @Step("click weibo icon")
     public void weiboIconClick() {
         weiboIcon.click();
     }
 
+    @Step("navigate to weibo china page")
     public WeiboChinaPage navigateToWeiboChinaPage() {
         weiboIconClick();
-
-
-        int winHandleNum = ProviderForDriver.getDriver().getWindowHandles().size();
+        int winHandleNum = ProviderForDriver.INSTANCE.getDriver().getWindowHandles().size();
         if (winHandleNum > 1){
-            for (String winHandle: ProviderForDriver.getDriver().getWindowHandles()){
-                ProviderForDriver.getDriver().switchTo().window(winHandle);
+            for (String winHandle: ProviderForDriver.INSTANCE.getDriver().getWindowHandles()){
+                ProviderForDriver.INSTANCE.getDriver().switchTo().window(winHandle);
             }
         }
         return new WeiboChinaPage();
     }
 
+    @Step("get page url")
     public String getPageUrl(){
-        return ProviderForDriver.getDriver().getCurrentUrl();
+        return ProviderForDriver.INSTANCE.getDriver().getCurrentUrl();
     }
 
     public WebElement getWeiboIcon() {

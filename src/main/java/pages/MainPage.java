@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Constants;
@@ -53,29 +54,37 @@ public class MainPage extends AbstractPage{
         Waiters.waitForElementToBeVisible(welcomeLabel, Constants.TIME_LOAD_ELEMENT);
     }
 
+    @Step("get text from welcome label")
     public String welcomeLabelGetText(){
         return welcomeLabel.getText();
     }
 
+    @Step("click menu button")
     public void menuButtonClick(){
         menuButton.click();
         Waiters.waitForElementToBeVisible(menuLanguage, Constants.TIME_LOAD_ELEMENT);
     }
 
+    @Step("click menu YellowTail")
     public void menuYellowTailClick(){
         menuYellowTail.click();
     }
 
+    @Step("click menu Language")
     public void menuLanguageClick(){
         menuLanguage.click();
     }
 
+    @Step("click menu ChinaLanguage")
     public void menuChinaLanguageClick() { menuChinaLanguage.click(); }
 
+    @Step("click menu WhereToBuy")
     public void menuWhereToBuyClick() { menuWhereToBuy.click(); }
 
+    @Step("click menu Cocktails")
     public void menuCocktailsClick() { menuCocktails.click(); }
 
+    @Step("navigate to chineMain page")
     public ChineMainPage navigateToChineMainPage(){
         menuButtonClick();
         Waiters.waitForElementToBeVisible(menuLanguage, Constants.TIME_LOAD_ELEMENT);
@@ -85,12 +94,14 @@ public class MainPage extends AbstractPage{
         return new ChineMainPage();
     }
 
+    @Step("navigate to whereToBuy page")
     public WhereToBuyPage navigateToWhereToBuyPage(){
         menuButtonClick();
         menuWhereToBuyClick();
         return new WhereToBuyPage();
     }
 
+    @Step("navigate to cocktails page")
     public CocktailsPage navigateToCocktailsPage() {
         menuButtonClick();
         menuCocktailsClick();

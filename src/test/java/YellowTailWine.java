@@ -3,8 +3,6 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import pages.*;
-import utils.Constants;
-import utils.Waiters;
 
 public class YellowTailWine extends JunitRunner{
     @Story("All required elements are displayed")
@@ -184,7 +182,7 @@ public class YellowTailWine extends JunitRunner{
         cocktailsPage.selectCocktailsDropBoxClick();
         cocktailsPage.redWineCocktailItemClick();
 
-        int searchResult = 7;
+        int searchResult = 1;
         Assertions.assertEquals(searchResult, cocktailsPage.elementsCount(cocktailsPage.getSearchResults()), "case 9, count of results of red wines does not equal expected count");
     }
 

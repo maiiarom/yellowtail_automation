@@ -1,22 +1,20 @@
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
 import pages.ProviderForDriver;
 import utils.Constants;
 
-import java.time.Duration;
-
+@ExtendWith(TestResultLoggerExtension.class)
 public class JunitRunner {
 
     @BeforeEach
     public void before() {
-        ProviderForDriver.getDriver();
-        ProviderForDriver.getDriver().get(Constants.WELCOME_PAGE_URL);
-        ProviderForDriver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        ProviderForDriver.INSTANCE.getDriver().get(Constants.WELCOME_PAGE_URL);
     }
 
-    @AfterEach
-    public void after() {
-        ProviderForDriver.removeDriver();
-    }
+//    @AfterEach
+//    public void after() {
+//        ProviderForDriver.INSTANCE.removeDriver();
+//    }
 
 }
