@@ -8,21 +8,13 @@ import pages.ProviderForDriver;
 
 
 public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback {
-//    private List<TestResultStatus> testResultStatus = new ArrayList<>();
 
     public void afterAll(ExtensionContext extensionContext) {
-//        System.out.println("Test in after all section");
         ProviderForDriver.INSTANCE.removeDriver();
     }
 
-//    private enum TestResultStatus {
-//        FAILED
-//    }
-
     public void testFailed(ExtensionContext context, Throwable cause) {
-//        System.out.println("Test is failed");
         makeScreenshot();
-//        testResultStatus.add(TestResultStatus.FAILED);
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")
