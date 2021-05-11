@@ -16,7 +16,6 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
         makeScreenshot();
-        ProviderForDriver.INSTANCE.removeDriver();
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")

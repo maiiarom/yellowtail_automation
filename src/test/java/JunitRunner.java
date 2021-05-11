@@ -14,8 +14,8 @@ public class JunitRunner {
         ProviderForDriver.INSTANCE.getDriver().get(Constants.WELCOME_PAGE_URL);
     }
 
-//    @AfterEach
-//    public void after() {
-//        ProviderForDriver.INSTANCE.removeDriver();
-//    }
+    @AfterEach
+    public void after() {
+        ProviderForDriver.INSTANCE.removeDriver();
+    }
 }
