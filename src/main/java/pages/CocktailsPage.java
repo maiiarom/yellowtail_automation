@@ -9,6 +9,8 @@ import utils.Waiters;
 
 import java.util.List;
 
+import static utils.Constants.WELCOME_PAGE_URL;
+
 public class CocktailsPage extends AbstractPage{
 
     @FindBy(css = ".selected")

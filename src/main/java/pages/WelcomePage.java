@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.Select;
 import utils.Constants;
 import utils.Waiters;
 
+import static utils.Constants.WELCOME_PAGE_URL;
+
 public class WelcomePage extends AbstractPage{
 
     @FindBy(css = "[for=\"confirm\"]")

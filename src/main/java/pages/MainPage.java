@@ -8,6 +8,8 @@ import utils.Waiters;
 
 import java.time.Duration;
 
+import static utils.Constants.WELCOME_PAGE_URL;
+
 public class MainPage extends AbstractPage{
 
     // page elements

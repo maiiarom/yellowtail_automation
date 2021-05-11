@@ -9,6 +9,8 @@ import utils.Waiters;
 import java.time.Duration;
 import java.util.List;
 
+import static utils.Constants.WELCOME_PAGE_URL;
+
 public class WhereToBuyPage extends AbstractPage{
 
     @FindBy(css = "#locationName")

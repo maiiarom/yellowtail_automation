@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import utils.Constants;
 import utils.Waiters;
 
+import static utils.Constants.WELCOME_PAGE_URL;
+
 public class WeiboChinaPage extends AbstractPage{
 
     @FindBy(css = ".logo")

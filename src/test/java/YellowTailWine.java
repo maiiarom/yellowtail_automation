@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import pages.*;
 
 public class YellowTailWine extends JunitRunner{
+
     @Story("All required elements are displayed")
     @Description("Case 1: Welcome page: all required elements are displayed")
     @Test
@@ -182,7 +183,7 @@ public class YellowTailWine extends JunitRunner{
         cocktailsPage.selectCocktailsDropBoxClick();
         cocktailsPage.redWineCocktailItemClick();
 
-        int searchResult = 1;
+        int searchResult = 7;
         Assertions.assertEquals(searchResult, cocktailsPage.elementsCount(cocktailsPage.getSearchResults()), "case 9, count of results of red wines does not equal expected count");
     }
 

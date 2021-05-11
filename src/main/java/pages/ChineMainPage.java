@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Constants;
 import utils.Waiters;
+import static utils.Constants.WELCOME_PAGE_URL;
 
 public class ChineMainPage extends AbstractPage{
 
