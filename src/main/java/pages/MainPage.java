@@ -6,10 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import utils.Constants;
 import utils.Waiters;
 
-import java.time.Duration;
-
-import static utils.Constants.WELCOME_PAGE_URL;
-
 public class MainPage extends AbstractPage{
 
     // page elements
@@ -48,11 +44,11 @@ public class MainPage extends AbstractPage{
 
     public MainPage() {
         super();
-        waitForLoadableElement();
+        waitForLoad();
     }
 
     @Override
-    public void waitForLoadableElement(){
+    public void waitForLoad(){
         Waiters.waitForElementToBeVisible(welcomeLabel, Constants.TIME_LOAD_ELEMENT);
     }
 

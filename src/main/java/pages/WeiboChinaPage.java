@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import utils.Constants;
 import utils.Waiters;
 
-import static utils.Constants.WELCOME_PAGE_URL;
-
 public class WeiboChinaPage extends AbstractPage{
 
     @FindBy(css = ".logo")
@@ -15,11 +13,11 @@ public class WeiboChinaPage extends AbstractPage{
 
     public WeiboChinaPage() {
         super();
-        waitForLoadableElement();
+        waitForLoad();
     }
 
     @Override
-    public void waitForLoadableElement(){
+    public void waitForLoad(){
         Waiters.waitForElementToBeVisible(weiboIcon, Constants.TIME_LOAD_WEIBOPAGE_ELEMENT);
     }
 

@@ -9,8 +9,6 @@ import utils.Waiters;
 
 import java.util.List;
 
-import static utils.Constants.WELCOME_PAGE_URL;
-
 public class CocktailsPage extends AbstractPage{
 
     @FindBy(css = ".selected")
@@ -28,11 +26,11 @@ public class CocktailsPage extends AbstractPage{
 
     public CocktailsPage() {
         super();
-        waitForLoadableElement();
+        waitForLoad();
     }
 
     @Override
-    public void waitForLoadableElement(){
+    public void waitForLoad(){
         Waiters.waitForElementToBeVisible(selectCocktailsDropBox, Constants.TIME_LOAD_ELEMENT);
     }
     @Step("click selectCocktails drop box")

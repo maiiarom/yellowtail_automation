@@ -6,10 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import utils.Constants;
 import utils.Waiters;
 
-import java.time.Duration;
 import java.util.List;
-
-import static utils.Constants.WELCOME_PAGE_URL;
 
 public class WhereToBuyPage extends AbstractPage{
 
@@ -22,11 +19,11 @@ public class WhereToBuyPage extends AbstractPage{
 
     public WhereToBuyPage() {
         super();
-        waitForLoadableElement();
+        waitForLoad();
     }
 
     @Override
-    public void waitForLoadableElement(){
+    public void waitForLoad(){
         Waiters.waitForElementToBeVisible(fieldLocation, Constants.TIME_LOAD_ELEMENT);
     }
 

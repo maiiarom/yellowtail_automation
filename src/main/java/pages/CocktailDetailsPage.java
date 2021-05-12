@@ -6,8 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import utils.Constants;
 import utils.Waiters;
 
-import static utils.Constants.WELCOME_PAGE_URL;
-
 public class CocktailDetailsPage extends AbstractPage{
 
     @FindBy (css = ".row>h3")
@@ -15,11 +13,11 @@ public class CocktailDetailsPage extends AbstractPage{
 
     public CocktailDetailsPage() {
         super();
-        waitForLoadableElement();
+        waitForLoad();
     }
 
     @Override
-    public void waitForLoadableElement(){
+    public void waitForLoad(){
         Waiters.waitForElementToBeVisible(ingredientSection, Constants.TIME_LOAD_ELEMENT);
     }
 

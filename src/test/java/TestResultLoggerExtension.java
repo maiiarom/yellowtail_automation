@@ -6,9 +6,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import pages.ProviderForDriver;
 
-
-public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback {
-
+public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback{
     public void afterAll(ExtensionContext extensionContext) {
         ProviderForDriver.INSTANCE.removeDriver();
     }
@@ -16,6 +14,7 @@ public class TestResultLoggerExtension implements TestWatcher, AfterAllCallback 
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
         makeScreenshot();
+        ProviderForDriver.INSTANCE.removeDriver();
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")

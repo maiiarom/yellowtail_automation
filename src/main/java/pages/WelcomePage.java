@@ -7,8 +7,6 @@ import org.openqa.selenium.support.ui.Select;
 import utils.Constants;
 import utils.Waiters;
 
-import static utils.Constants.WELCOME_PAGE_URL;
-
 public class WelcomePage extends AbstractPage{
 
     @FindBy(css = "[for=\"confirm\"]")
@@ -21,11 +19,11 @@ public class WelcomePage extends AbstractPage{
 
     public WelcomePage() {
         super();
-        waitForLoadableElement();
+        waitForLoad();
     }
 
     @Override
-    public void waitForLoadableElement(){
+    public void waitForLoad(){
         Waiters.waitForElementToBeVisible(legalAgeCheck, Constants.TIME_LOAD_ELEMENT);
     }
     @Step("get legalAgeCheck text")

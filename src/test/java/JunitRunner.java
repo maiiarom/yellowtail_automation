@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import pages.ProviderForDriver;
@@ -14,8 +13,8 @@ public class JunitRunner {
         ProviderForDriver.INSTANCE.getDriver().get(Constants.WELCOME_PAGE_URL);
     }
 
-    @AfterEach
-    public void after() {
-        ProviderForDriver.INSTANCE.removeDriver();
-    }
+//    @AfterEach
+//    public void after() {
+//        ProviderForDriver.INSTANCE.removeDriver();
+//    }
 }

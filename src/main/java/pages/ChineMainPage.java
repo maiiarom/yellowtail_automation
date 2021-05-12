@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Constants;
 import utils.Waiters;
-import static utils.Constants.WELCOME_PAGE_URL;
 
 public class ChineMainPage extends AbstractPage{
 
@@ -14,11 +13,11 @@ public class ChineMainPage extends AbstractPage{
     private WebElement weiboIcon;
     public ChineMainPage() {
         super();
-        waitForLoadableElement();
+        waitForLoad();
     }
 
     @Override
-    public void waitForLoadableElement(){
+    public void waitForLoad(){
         Waiters.waitForElementToBeVisible(chinaMainPageWelcomeLabel, Constants.TIME_LOAD_ELEMENT);
     }
 

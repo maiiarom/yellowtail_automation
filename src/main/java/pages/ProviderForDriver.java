@@ -22,6 +22,7 @@ public class ProviderForDriver {
         if (DRIVER.get() == null) {
             String browserType = loadProperties().getProperty("browserType");
             DRIVER.set(DriverFactory.createDriver(BrowserType.valueOf(browserType)));
+            //DRIVER.set(DriverFactory.createDriver(browserType));
         }
         return DRIVER.get();
     }

@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.support.PageFactory;
-import utils.Constants;
 
 public abstract class AbstractPage {
 
@@ -9,5 +8,5 @@ public abstract class AbstractPage {
         PageFactory.initElements(ProviderForDriver.INSTANCE.getDriver(), this);
     }
 
-    public abstract void waitForLoadableElement();
+    public abstract void waitForLoad();
 }
